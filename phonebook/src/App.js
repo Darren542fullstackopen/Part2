@@ -10,6 +10,7 @@ const App = () => {
   const [persons, setPersons] = useState([]) 
   const [filterString, setFilterString] = useState('')
   const [message, setMessage] = useState(null)
+  const [errorMsg, setErrorMsg] = useState(false);
 
   const hook = () => {
     personsService.getAllPeople()
@@ -32,7 +33,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={message} />
+      <Notification message={message} isError={errorMsg} />
       <PersonFilter
         filterString={filterString}
         handleFilterChange={handleFilterChange}
@@ -44,7 +45,7 @@ const App = () => {
         setMessage={setMessage}
       />
       <h2>Numbers</h2>
-      <Persons persons={matchingNumbers} setPersons={setPersons} setMessage={setMessage} />
+      <Persons persons={matchingNumbers} setPersons={setPersons} setErrorMsg={setErrorMsg} setMessage={setMessage} />
     </div>
   )
 }
