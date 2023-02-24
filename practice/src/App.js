@@ -76,6 +76,7 @@ const App = ( props ) => {
         setNotes(notes.map(n => n.id !== id ? n : response))
       })
       .catch(error => {
+        console.log(error);
         setErrorMessage(
           `the note '${note.content}' was already deleted from server`
         )
